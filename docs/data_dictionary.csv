@@ -1,0 +1,66 @@
+File,Variable,TypeOrUnits,Description
+application_*,CustomerID,text,Synthetic join key shared across tables.
+application_*,ApplicationMonth,YYYY-MM,Month of the simulated application.
+application_*,ProductType,category,"Installment, revolving, or other credit product."
+application_*,LoanPurpose,category,Simulated primary use of requested credit.
+application_*,ApplicantAge,years,Age at application.
+application_*,EmploymentYears,years,Approximate continuous employment tenure; may be missing.
+application_*,AnnualIncome,USD-like units,Simulated annual household income; values are not actual dollars from a bank.
+application_*,RequestedAmount,USD-like units,Requested credit amount.
+application_*,AnnualPayment,USD-like units,Estimated annual scheduled payment.
+application_*,GoodsValue,USD-like units,"Estimated value associated with financed goods, where applicable."
+application_*,Children,count,"Number of dependent children, capped at six."
+application_*,HouseholdSize,count,Number of people in the household.
+application_*,EducationLevel,category,Recoded education category.
+application_*,MaritalStatus,category,Recoded marital or partnership status.
+application_*,HousingStatus,category,Current housing arrangement.
+application_*,IncomeSource,category,Primary income-source group.
+application_*,OccupationGroup,category,Broad occupational group; may be missing.
+application_*,OwnsVehicle,category,Whether the applicant owns a vehicle.
+application_*,OwnsHome,category,Whether the applicant reports real-property ownership.
+application_*,MarketTier,category,Synthetic market-size and volatility grouping.
+application_*,ResidenceWorkMismatch,0/1,Indicator that residence and work market differ.
+application_*,VehicleAgeYears,years,Age of owned vehicle; missing can also mean unavailable.
+application_*,VendorScoreAtlas,300-850,Simulated third-party risk score; higher indicates lower modeled risk.
+application_*,VendorScoreBeacon,300-850,Second simulated third-party risk score.
+application_*,VendorScoreCedar,300-850,Third simulated third-party risk score.
+application_*,CreditInquiries12M,count,Recent credit inquiries.
+application_*,PhoneTenureYears,years,Approximate tenure of current phone contact.
+application_*,CommunityLatePaymentRate,0-1,Noisy contextual late-payment indicator; not an individual payment record.
+application_*,LoanToIncomeRatio,ratio,RequestedAmount / AnnualIncome.
+application_*,PaymentToIncomeRatio,ratio,AnnualPayment / AnnualIncome.
+application_*,IncomePerHouseholdMember,USD-like units,AnnualIncome / HouseholdSize.
+application_*,DataCompletenessScore,0-1,Share of applicant fields present before final controlled masking.
+application_*,PriorAccountCount,count,Count of supplied credit-account history records.
+application_*,ActiveAccountCount,count,Count of supplied accounts currently open.
+application_*,OutstandingBalance,USD-like units,Sum of current balances in supplied account history.
+application_*,OverdueAccountCount,count,Accounts with past-due days or overdue balance.
+application_*,CreditHistoryYears,years,Age of oldest supplied account record.
+application_*,PriorApplicationCount,count,Count of supplied prior lending requests.
+application_*,PriorApprovalRate,0-1,Share of supplied prior requests approved.
+application_*,AveragePriorRequestedAmount,USD-like units,Mean requested amount in prior requests.
+application_*,DebtToIncomeRatio,ratio,(OutstandingBalance + RequestedAmount) / AnnualIncome.
+train/validation,DefaultFlag,0/1,Newly generated outcome. 1 denotes material payment difficulty in the simulated performance window.
+credit_account_history,AccountRecordID,text,Synthetic account-record key.
+credit_account_history,AccountStatus,category,"Open, closed, transferred, charged off, or other."
+credit_account_history,AccountType,category,Broad account product.
+credit_account_history,OpenedMonthsAgo,months,Months between account opening and current application.
+credit_account_history,ScheduledEndMonthOffset,months,Scheduled end relative to application; positive is after application.
+credit_account_history,OriginalBalance,USD-like units,Original account balance or limit.
+credit_account_history,CurrentBalance,USD-like units,Outstanding balance at application.
+credit_account_history,OverdueBalance,USD-like units,Past-due balance.
+credit_account_history,DaysPastDue,days,Days past due at the reference date.
+credit_account_history,TimesExtended,count,Number of reported extensions or prolongations.
+prior_lending_activity,PriorRequestID,text,Synthetic prior-request key.
+prior_lending_activity,DecisionStatus,category,"Approved, declined, withdrawn, offer not used, or other."
+prior_lending_activity,ProductCategory,category,Broad prior product.
+prior_lending_activity,RequestedAmount,USD-like units,Amount requested in prior request.
+prior_lending_activity,ApprovedAmount,USD-like units,Amount approved or offered.
+prior_lending_activity,ScheduledPayment,USD-like units,Scheduled payment when available.
+prior_lending_activity,TermMonths,months,Requested or approved term.
+prior_lending_activity,DecisionMonthsAgo,months,Months between prior decision and current application.
+prior_lending_activity,ChannelGroup,category,Broad acquisition or servicing channel.
+prior_lending_activity,PricingBand,category,Synthetic relative pricing band.
+prior_lending_activity,DownPaymentRate,0-1,"Down payment divided by associated purchase amount, where available."
+responsible_use_audit,AuditGenderGroup,category,Audit-only simulated group; prohibited as a model or approval input.
+responsible_use_audit,AuditAgeBand,category,Audit-only age band for performance comparisons.
